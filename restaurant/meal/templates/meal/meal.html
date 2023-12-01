@@ -1,0 +1,55 @@
+{% extends 'base.html' %} {% block title%} All Items {% endblock%} {% load
+static %} {% block breadcamp %}
+<div class="container-xxl py-5 bg-dark hero-header mb-5">
+  <div class="container text-center my-5 pt-5 pb-4">
+    <h1 class="display-3 text-white mb-3 animated slideInDown">
+      All Items Categories
+    </h1>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb justify-content-center text-uppercase">
+        <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+        <li class="breadcrumb-item text-white active" aria-current="page">
+          All Items Categories
+        </li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+{% endblock %} {% block content %}
+
+<!-- Menu Start -->
+<div class="container-xxl py-5">
+  <div class="container">
+    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+      <h5 class="section-title ff-secondary text-center text-primary fw-normal">
+        All Items Categories
+      </h5>
+      <h1 class="mb-5">Most Popular Categories</h1>
+    </div>
+    <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
+      <div class="tab-content">
+        <div id="tab-1" class="tab-pane fade show p-0 active">
+          <div class="row g-4">
+            {% for i in categories%}
+            <div class="col-lg-4">
+              <div class="card" style="width: 18rem;">
+                <img src="{{i.strCategoryThumb}}" class="card-img-top" alt="{{i.strCategory}}">
+                <div class="card-body">
+                  <h6 class="card-title disabled">ID : {{i.idCategory}}</h6>
+                  <h5 class="card-title">Name : {{i.strCategory}}</h5>
+                  <p class="card-text">{{ i.strCategoryDescription | truncatewords:10 }}</p>
+                  <a href="{{i.strCategoryThumb}}" class="btn btn-primary">View Category</a>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Menu End -->
+
+{% endblock %}
